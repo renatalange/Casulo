@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("mongodb+srv://renataml23:0kTvHNkc8YbvFY5f@casulo.pneb2qp.mongodb.net/?retryWrites=true&w=majority&appName=Casulo")
+}
+
+model Usuario {
+  id_usuario   String @id @default(auto()) @map("_id") @db.ObjectId
+  email        String @unique
+  nome         String
+  nome_usuario String
+  senha        String
+}
